@@ -1,0 +1,37 @@
+<div class="col-md-6" style="margin-left:0%">
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Relatorio de Debito Financeiro</h3>
+    </div>
+    <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+      <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <strong>{{ message.text }}</strong>
+      </div>
+      <div class="box-body">
+        <div >
+          <label for="inputZona" class="col-sm-2 control-label">Zona</label>
+          <div class="col-sm-10">
+                <select [(ngModel)]="idZona" name="zona" class="form-control" (ngModelChange)="onChangeNucleo($event)">
+                    <option *ngFor="let zona of zonas" [value]="zona.idZona">{{zona.nome}}</option>
+                </select>
+            <span class="help-block" >Zona is required</span>
+          </div>
+        </div>
+        
+        <div >
+            <label for="inputNucleo" class="col-sm-2 control-label">Nucleo</label>
+            <div class="col-sm-10">
+                  <select [(ngModel)]="id" name="nucleo" class="form-control">
+                      <option *ngFor="let nucleo of nucleos" [value]="nucleo.id">{{nucleo.nome}}</option>
+                  </select>
+              <span class="help-block" >Nucleo is required</span>
+            </div>
+          </div>
+
+      </div>
+      <div class="box-footer">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
